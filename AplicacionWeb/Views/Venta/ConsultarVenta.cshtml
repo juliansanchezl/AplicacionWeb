@@ -1,0 +1,63 @@
+@model IEnumerable<AplicacionWeb.Models.Venta>
+
+@{
+	ViewBag.Title = "Gestionar Ventas";		
+}
+<h2>Gestionar Ventas</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Fecha</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Cedula</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Apellido</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Valor Total</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Venta venta in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => venta.Fecha)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => venta.Cliente.Cedula)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => venta.Cliente.Nombres)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => venta.Cliente.Apellidos)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => venta.Total)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Consultar", "EditarVenta", new { id = venta.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarVenta", new { id = venta.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nueva Venta", "CrearVenta")
+	</p>
+</div>
+	

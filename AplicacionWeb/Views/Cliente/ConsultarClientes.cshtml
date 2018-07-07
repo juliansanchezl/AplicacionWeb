@@ -1,0 +1,85 @@
+@model IEnumerable<AplicacionWeb.Models.Cliente>
+
+@{
+	ViewBag.Title = "Gestionar Clientes";		
+}
+<h2>Gestionar Clientes</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">C&#233;dula</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombres</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Apellidos</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Fecha Nacimiento</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Foto</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Activo</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Genero</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Ciudad</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Cliente cliente in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Cedula)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Nombres)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Apellidos)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Fechanacimiento)
+	  			</td>
+	  			<td>
+	  				<img height="120" src="@cliente.Fotourl">
+	  			</td>
+	  			<td>
+	  				<div class="form-group">
+	  					<div class="col-md-10">
+	  						@Html.CheckBoxFor(model => cliente.Usuarioactivo)
+	  					</div>
+	  				</div>
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Genero.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => cliente.Ciudad.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Editar", "EditarCliente", new { id = cliente.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarCliente", new { id = cliente.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nuevo Cliente", "CrearCliente")
+	</p>
+</div>
+	

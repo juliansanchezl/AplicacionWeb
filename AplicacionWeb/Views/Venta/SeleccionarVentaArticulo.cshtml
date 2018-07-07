@@ -1,0 +1,51 @@
+@model AplicacionWeb.Models.Venta
+
+@{
+	ViewBag.Title = "Seleccione un producto";		
+}
+<h2>Seleccione un producto</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Imagen</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Tipo producto</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Precio unitario</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Producto producto in ViewBag.listaproductos) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => producto.Nombre)
+	  			</td>
+	  			<td>
+	  				<img height="120" src="@producto.Fotourl">
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => producto.Tipo_producto.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => producto.Precio)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Selecionar", "CrearVentaArticulo", new { ventaid = Model.Id,productoid = producto.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarVenta")
+	</p>
+</div>
+	

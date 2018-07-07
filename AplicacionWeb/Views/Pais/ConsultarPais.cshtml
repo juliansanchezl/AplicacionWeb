@@ -1,0 +1,33 @@
+@model IEnumerable<AplicacionWeb.Models.Pais>
+
+@{
+	ViewBag.Title = "Gestionar Paises";		
+}
+<h2>Gestionar Paises</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Pais pais in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => pais.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarPais", new { id = pais.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nuevo Pais", "CrearPais")
+	</p>
+</div>
+	

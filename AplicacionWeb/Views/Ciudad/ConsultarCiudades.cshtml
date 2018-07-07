@@ -1,0 +1,45 @@
+@model IEnumerable<AplicacionWeb.Models.Ciudad>
+
+@{
+	ViewBag.Title = "Gestionar Ciudades";		
+}
+<h2>Gestionar Ciudades</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Departamento</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Ciudad ciudad in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => ciudad.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => ciudad.Departamento.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Editar", "EditarCiudad", new { id = ciudad.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarCiudad", new { id = ciudad.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nueva Ciudad", "CrearCiudad")
+	</p>
+</div>
+	

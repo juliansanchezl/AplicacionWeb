@@ -1,0 +1,53 @@
+@model AplicacionWeb.Models.Venta
+
+@{
+	ViewBag.Title = "Nueva Venta";		
+}
+<h2>Nueva Venta</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<div class="form-group">
+				@Html.Label("Fecha", htmlAttributes: new { @class = "control-label col-md-2" })
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				
+				<div class="col-md-offset-2 col-md-10">
+					@Html.DropDownListFor(model => Model.Clienteid, new SelectList(ViewBag.listaclientes, "Id", "Nombres"), "--- Seleccione el Cliente ---", new { @class = "form-control" } )
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Crear"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarVenta")
+	</p>
+</div>
+	
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}		
+
+<script type="text/javascript">
+$(function () {
+    $('#Fecha').datetimepicker({
+        format: "DD/MM/YYYY",
+        showTodayButton: true,
+        defaultDate: new Date()
+    }).on('dp.change', function (e) {
+        $(this).data('DateTimePicker').hide();
+    });
+});
+
+</script>

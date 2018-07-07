@@ -1,0 +1,54 @@
+@model IEnumerable<AplicacionWeb.Models.RegistroPago>
+
+@{
+	ViewBag.Title = "Listado de Pagos Registrados";		
+}
+<h2>Listado de Pagos Registrados</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">IdVenta</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Fecha</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Valor</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Estado</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">C&#243;digo Aprobaci&#243;n</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.RegistroPago registropago in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => registropago.Ventaid)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => registropago.Fecha)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => registropago.Valor)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => registropago.Estadotransaccion)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => registropago.Codigoaprobacion)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarPago", new { id = registropago.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+</div>
+	

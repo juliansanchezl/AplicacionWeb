@@ -1,0 +1,56 @@
+@model AplicacionWeb.Models.VentaArticulos
+
+@{
+	ViewBag.Title = "Desea agregar el siguiente producto?";		
+}
+<h2>Desea agregar el siguiente producto?</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<img height="120" src="@ViewBag.producto.Fotourl">
+			<div class="form-group">
+				<label class="control-label col-md-2">Nombre</label>
+				<div class="col-md-10">
+				@ViewBag.producto.Nombre
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Tipo de producto</label>
+				<div class="col-md-10">
+				@ViewBag.producto.Tipo_producto.Nombre
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Precio unitario</label>
+				<div class="col-md-10">
+				@ViewBag.producto.Precio
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Descripci&#243;n</label>
+				<div class="col-md-10">
+				@ViewBag.producto.Descripcion
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Cantidad</label>
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Agregar"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "EditarVenta", new { id = Model.Ventaid })
+	</p>
+</div>
+	

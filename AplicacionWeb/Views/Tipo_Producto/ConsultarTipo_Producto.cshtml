@@ -1,0 +1,45 @@
+@model IEnumerable<AplicacionWeb.Models.Tipo_Producto>
+
+@{
+	ViewBag.Title = "Gestionar Tipos de Productos";		
+}
+<h2>Gestionar Tipos de Productos</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Descripci&#243;n</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Tipo_Producto tipo_producto in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => tipo_producto.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => tipo_producto.Descripcion)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Editar", "EditarTipo_Producto", new { id = tipo_producto.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarTipo_Producto", new { id = tipo_producto.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nuevo Tipo de Producto", "CrearTipo_Producto")
+	</p>
+</div>
+	

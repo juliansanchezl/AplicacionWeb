@@ -1,0 +1,50 @@
+@model AplicacionWeb.Models.Producto
+
+@{
+	ViewBag.Title = "Eliminar Producto";		
+}
+<h2>Eliminar Producto</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<img height="120" src="@Model.Fotourl">
+			<div class="form-group">
+				<label class="control-label col-md-2">Nombre</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Nombre)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Descripci&#243;n</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Descripcion)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Precio</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Precio)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Tipo de producto</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Tipo_producto.Nombre)
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Eliminar"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarProducto")
+	</p>
+</div>
+	

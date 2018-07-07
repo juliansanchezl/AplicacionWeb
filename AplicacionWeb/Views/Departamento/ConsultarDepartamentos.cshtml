@@ -1,0 +1,45 @@
+@model IEnumerable<AplicacionWeb.Models.Departamento>
+
+@{
+	ViewBag.Title = "Gestionar Departamento";		
+}
+<h2>Gestionar Departamento</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2">Pais</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Departamento departamento in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => departamento.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.DisplayFor(model => departamento.Pais.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Editar", "EditarDepartamento", new { id = departamento.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarDepartamento", new { id = departamento.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nuevo Departamento", "CrearDepartamento")
+	</p>
+</div>
+	

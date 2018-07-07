@@ -1,0 +1,39 @@
+@model IEnumerable<AplicacionWeb.Models.Genero>
+
+@{
+	ViewBag.Title = "Gestionar Generos";		
+}
+<h2>Gestionar Generos</h2>		
+<br />
+<div>
+	<table class="table">
+		<tr>
+	  		<th>
+	  			<label class="control-label col-md-2">Nombre</label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+	  		<th>
+	  			<label class="control-label col-md-2"></label>			
+	  		</th>
+		</tr>
+	@foreach (AplicacionWeb.Models.Genero genero in Model) {
+		<tr>
+	  			<td>
+	  				@Html.DisplayFor(model => genero.Nombre)
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Editar", "EditarGenero", new { id = genero.Id })
+	  			</td>
+	  			<td>
+	  				@Html.ActionLink("Eliminar", "EliminarGenero", new { id = genero.Id })
+	  			</td>
+		</tr>
+	}
+	</table>
+	<p>
+	@Html.ActionLink("Crear Nuevo Genero", "CrearGenero")
+	</p>
+</div>
+	

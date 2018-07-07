@@ -1,0 +1,68 @@
+@model AplicacionWeb.Models.Cliente
+
+@{
+	ViewBag.Title = "Eliminar Cliente";		
+}
+<h2>Eliminar Cliente</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<img height="120" src="@Model.Fotourl">
+			<div class="form-group">
+				<label class="control-label col-md-2">C&#233;dula:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Cedula)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Nombres:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Nombres)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Apellidos:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Apellidos)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Fecha de Nacimiento:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Fechanacimiento)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Ciudad:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Ciudad.Nombre)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Genero:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Genero.Nombre)
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.Label("Estado Activo", htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.CheckBoxFor(model => Model.Usuarioactivo)
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Eliminar"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarClientes")
+	</p>
+</div>
+	

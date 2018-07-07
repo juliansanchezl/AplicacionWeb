@@ -1,0 +1,96 @@
+@model AplicacionWeb.Models.Venta
+
+@{
+	ViewBag.Title = "Editar Venta";		
+}
+<h2>Editar Venta</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-md-2">Fecha:</label>
+				<div class="col-md-10">
+				@Html.DisplayFor(model => Model.Fecha)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Cliente:</label>
+				<div class="col-md-10">
+				@ViewBag.nombrecliente
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Total a Pagar:</label>
+				<div class="col-md-10">
+				@ViewBag.total
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Registrar Pago"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+			<p>
+			@Html.ActionLink("Agregar Producto (+)", "SeleccionarVentaArticulo", new { id = Model.Id })
+			</p>
+			<table class="table">
+				<tr>
+			  		<th>
+			  			<label class="control-label col-md-2">Nombre</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2">Imagen</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2">Tipo producto</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2">Precio unitario</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2">Cantidad</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2">Total</label>			
+			  		</th>
+			  		<th>
+			  			<label class="control-label col-md-2"></label>			
+			  		</th>
+				</tr>
+			@foreach (AplicacionWeb.Models.VentaArticulos ventaarticulo in Model.Articulos) {
+				<tr>
+			  			<td>
+			  				@Html.DisplayFor(model => ventaarticulo.Producto.Nombre)
+			  			</td>
+			  			<td>
+			  				<img height="120" src="@ventaarticulo.Producto.Fotourl">
+			  			</td>
+			  			<td>
+			  				@Html.DisplayFor(model => ventaarticulo.Producto.Tipo_producto.Nombre)
+			  			</td>
+			  			<td>
+			  				@Html.DisplayFor(model => ventaarticulo.Producto.Precio)
+			  			</td>
+			  			<td>
+			  				@Html.DisplayFor(model => ventaarticulo.Cantidad)
+			  			</td>
+			  			<td>
+			  				@Html.DisplayFor(model => ventaarticulo.Total)
+			  			</td>
+			  			<td>
+			  				@Html.ActionLink("Remover Articulo", "EliminarVentaArticulo", new { id = ventaarticulo.Id })
+			  			</td>
+				</tr>
+			}
+			</table>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarVenta")
+	</p>
+</div>
+	

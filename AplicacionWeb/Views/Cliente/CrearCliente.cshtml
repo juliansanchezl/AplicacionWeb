@@ -1,0 +1,89 @@
+@model AplicacionWeb.Models.Cliente
+
+@{
+	ViewBag.Title = "Crear Cliente";		
+}
+<h2>Crear Cliente</h2>		
+<br />
+<div>
+	@using (Html.BeginForm())
+	{
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-md-2">C&#233;dula</label>
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Nombres</label>
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Apellidos</label>
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.Label("fechanacimiento", htmlAttributes: new { @class = "control-label col-md-2" })
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Fechanacimiento, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">FotoUrl</label>
+			    <div class="col-md-10">
+					@Html.EditorFor(Model => Model.Fotourl, new { htmlAttributes = new { @class = "form-control" } })
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.Label("Estado Activo", htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.CheckBoxFor(model => Model.Usuarioactivo)
+				</div>
+			</div>
+			<div class="form-group">
+				
+				<div class="col-md-offset-2 col-md-10">
+					@Html.DropDownListFor(model => Model.Generoid, new SelectList(ViewBag.listagenero, "Id", "Nombre"), "--- Seleccione el Genero           ---", new { @class = "form-control" } )
+				</div>
+			</div>
+			<div class="form-group">
+				
+				<div class="col-md-offset-2 col-md-10">
+					@Html.DropDownListFor(model => Model.Ciudadid, new SelectList(ViewBag.listaciudad, "Id", "Nombre"), "--- Seleccione la Ciudad de Origen ---", new { @class = "form-control" } )
+				</div>
+			</div>
+			<p>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Crear"  class="btn btn-default" />
+				</div>
+			</div>
+			</p>
+		</div>
+	}
+	<p>
+	@Html.ActionLink("Volver al listado", "ConsultarClientes")
+	</p>
+</div>
+	
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}		
+
+<script type="text/javascript">
+$(function () {
+    $('#Fechanacimiento').datetimepicker({
+        format: "DD/MM/YYYY",
+        showTodayButton: true,
+        defaultDate: new Date()
+    }).on('dp.change', function (e) {
+        $(this).data('DateTimePicker').hide();
+    });
+});
+
+</script>
